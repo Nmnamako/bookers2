@@ -26,30 +26,33 @@
           
           <div class="collapse navbar-collapse" id="navbarNavDropdown" style="">
             <ul class="navbar-nav ml-auto">
-              <li>
-                <a class="navlink text-light" href="/">
-                  <i class="fa-solid fa-house"></i>
-                  Home
-                </a>
+              <li class="navlink text-light">
+                <i class="fa-solid fa-house"></i>
+                <%= link_to "Home", user_path(current_user.id), class:"navlink text-light" %>
               </li>
-                <li>
-                  <a class="navlink text-light" href="/homes/about">
-                    <i class="fa-sharp fa-solid fa-link"></i>
-                    About
-                  </a>
+              <li class="navlink text-light">
+                <i class="fa-sharp fa-solid fa-link"></i>
+                <%= link_to "Users", index_path, class:"navlink text-light" %>
+              </li>
+              <% if user_signed_in? %>
+                <li class="navlink text-light">
+                  <i class="fa-solid fa-book-open"></i>
+                  <%= link_to "Books", index_path, class:"navlink text-light" %>
                 </li>
-                <li>
-                  <a class="navlink text-light" href="/users/sign_up">
-                    <i class="fa-solid fa-user-plus"></i>
-                    Sign up
-                  </a>
+                <li class="navlink text-light">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"navlink text-light" %>
                 </li>
-                <li>
-                  <a class="navlink text-light" href="/users/sign_in">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    Log in
-                  </a>
+              <%else%>
+                <li class="navlink text-light">
+                  <i class="fa-solid fa-user-plus"></i>
+                  <%= link_to "Sign up", new_user_registration_path, class:"navlink text-light" %>
                 </li>
+                <li class="navlink text-light">
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                  <%= link_to "Log in", new_user_session_path, class:"navlink text-light" %>
+                </li>
+              <%end%>
             </ul>
           </div>
         </div>
