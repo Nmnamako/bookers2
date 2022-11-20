@@ -1,12 +1,13 @@
-<div class="col-md-3">
+      <div class="col-md-3">
         <p class="notice"></p>
         <h2>User info</h2>
-        <%= image_tag 'no_image', size: "100x100" %>
+        <%= image_tag @user.get_profile_image(100,100) %>
+        
         <table class="table">
           <tbody>
             <tr>
               <th>name</th>
-              <th><%= current_user.name %></th>
+              <th><%= @user.name %></th>
             </tr>
             <tr>
               <th>introduction</th>
@@ -14,6 +15,7 @@
             </tr>
           </tbody>
         </table>
+        
         <div class="row">
           <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
             <i class="fa-solid fa-user-gear"></i>
@@ -23,9 +25,9 @@
         <div class="form_group">
           <%= form_with model: book, url: '/books', method: :post do |f| %>
             <%= f.label :title %><br />
-            <%= f.text_field :title, class:"form-control book-title" %>
+            <%= f.text_field :title, class:"form-control book-title", value:"" %>
             <%= f.label :opinion %><br />
-            <%= f.text_area :body, class:"form-control book-body" %>
+            <%= f.text_area :body, class:"form-control book-body", value:"" %>
             <%= f.submit 'Create Book', class:"btn btn-success" %>
           <%end%>
         </div>
