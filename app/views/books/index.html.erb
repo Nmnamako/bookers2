@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/093f51139d.js" crossorigin="anonymous"></script>
 <main>
   
-  <p class="notice"></p>
+  <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="error_explanation">
       <% if @book.errors.any? %>
@@ -31,7 +31,7 @@
           <tbody>
             <% @book_all.each do |f|%>
               <tr>
-                <td><%= image_tag f.user.get_profile_image(80,80) %></td>
+                <td><%= link_to user_path(f.user.id) do %><%= image_tag f.user.get_profile_image(80,80) %><%end%></td>
                 <td><%= link_to book_path(f.id) do %><%= f.title %><%end%></td>
                 <td><%= f.body %></td>
               </tr>

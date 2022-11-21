@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit ]
+  before_action :is_matching_login_user, only: [:edit]
   def new
     @book = Book.new
   end
@@ -12,6 +12,7 @@ class BooksController < ApplicationController
   end
   
   def show
+  
     @book = Book.find(params[:id])
     @user = current_user
     @books = @user.books
